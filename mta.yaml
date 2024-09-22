@@ -19,6 +19,7 @@ modules:
     readiness-health-check-type: http
   build-parameters:
     builder: npm
+
 - name: HelloWorld-app-deployer
   type: com.sap.application.content
   path: gen
@@ -33,6 +34,7 @@ modules:
       - hello.zip
       name: hello
       target-path: app//
+
 - name: HelloWorld-db-deployer
   type: hdb
   path: gen/db
@@ -50,6 +52,7 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+
 resources:
 - name: HelloWorld-auth
   type: org.cloudfoundry.managed-service
@@ -60,16 +63,19 @@ resources:
     path: ./xs-security.json
     service: xsuaa
     service-plan: application
+
 - name: HelloWorld-html5-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-host
+
 - name: HelloWorld-db
   type: com.sap.xs.hdi-container
   parameters:
     service: hana
     service-plan: hdi-shared
+
 - name: HelloWorld-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
@@ -88,6 +94,7 @@ resources:
     service: destination
     service-name: HelloWorld-destination-service
     service-plan: lite
+    
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
